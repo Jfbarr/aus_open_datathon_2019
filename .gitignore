@@ -1,0 +1,4 @@
+# Dont version controll these folders
+
+# Notebook checkpoints
+.ipynb_checkpoints/
