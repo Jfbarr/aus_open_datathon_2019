@@ -1,5 +1,6 @@
 from scripts import MatchWinProbCalc as MWPC
 import numpy as np
+import pandas as pd
 
 """ If there is not data for a player, return default_prob as the probability they win a rally on their serve
     Note that the below function takes a summary_dataframe with an index of player names and a column title P_Win_Serve.
@@ -9,10 +10,12 @@ import numpy as np
 """
 def probability_return(summary_dataframe, player, default_prob):
     try:
-        if summary_dataframe.loc[player, 'P_Win_Serve'] != np.nan:
-            result = summary_dataframe.loc[player, 'P_Win_Serve']
-        else:
+        if pd.isna(summary_dataframe.loc[player, 'P_Win_Serve']):
             result =  default_prob
+            
+        else:
+            result = summary_dataframe.loc[player, 'P_Win_Serve']
+            
     except:
         result =  default_prob
     return result
